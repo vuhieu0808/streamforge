@@ -1,0 +1,29 @@
+# --- Các tệp trạng thái cục bộ (Local State files) ---
+# Tránh đẩy file chứa state thật hoặc file backup lên git
+*.tfstate
+*.tfstate.*
+
+# --- Tệp khóa trạng thái tạm thời (Crash/Lock files) ---
+# Tránh xung đột khi nhiều người chạy terraform cùng lúc
+crash.log
+.terraform.tfstate.lock.info
+.terraform/
+
+# --- Biến môi trường hoặc tệp chứa giá trị nhạy cảm ---
+# Nơi bạn lưu thông tin đăng nhập mật khẩu, secret key cục bộ
+*.tfvars
+*.tfvars.json
+!example.tfvars  # Giữ lại file mẫu (nếu có) để hướng dẫn người khác
+
+# --- Tệp cấu hình override (Dùng để test cá nhân) ---
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# --- Các tệp log của Terraform ---
+*.log
+
+# --- Gói nén module hoặc provider tải về (nếu có) ---
+.terraformrc
+terraform.rc
