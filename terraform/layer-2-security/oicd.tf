@@ -38,7 +38,10 @@ resource "aws_iam_role" "github_actions" {
             "token.actions.githubusercontent.com:aud" = "sts.amazonaws.com"
           }
           StringLike = {
-            "token.actions.githubusercontent.com:sub" = "repo:vuhieu0808/streamforge:*"
+            "token.actions.githubusercontent.com:sub" = [
+              "repo:vuhieu0808/streamforge:*",
+              "repo:vuhieu0808@*/streamforge@*:*"
+            ]
           }
         }
       }
