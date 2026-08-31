@@ -6,19 +6,19 @@ terraform {
       version = "~> 5.0"
     }
   }
-  
+
   backend "s3" {
-    bucket         = "streamforge-971450397571-ap-southeast-1-an"
-    key            = "layer-2-security/terraform.tfstate"
-    region         = "ap-southeast-1"
-    encrypt        = true
-    use_lockfile   = true
+    bucket       = "streamforge-971450397571-ap-southeast-1-an"
+    key          = "layer-2-security/terraform.tfstate"
+    region       = "ap-southeast-1"
+    encrypt      = true
+    use_lockfile = true
   }
 }
 
 resource "aws_iam_openid_connect_provider" "github" {
-  url = "https://token.actions.githubusercontent.com"
-  client_id_list = ["sts.amazonaws.com"]
+  url             = "https://token.actions.githubusercontent.com"
+  client_id_list  = ["sts.amazonaws.com"]
   thumbprint_list = ["6938fd4d98bab03faadb97b34396831e3780aea1"]
 }
 
@@ -39,6 +39,7 @@ resource "aws_iam_role" "github_actions" {
           }
           StringLike = {
             "token.actions.githubusercontent.com:sub" = "repo:vuhieu0808/streamforge:*"
+          }
         }
       }
     ]
